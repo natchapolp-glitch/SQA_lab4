@@ -6,25 +6,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * CP353201 Software Quality Assurance (1/2569)
- * Lab#4 - Boundary Value Analysis and Robustness Testing
- *
- * This test class mirrors Lab4_BVT.xlsx exactly:
- *   - "Normal"     sheet -> TC001-TC018 -> NormalBoundaryValueTesting
- *   - "Robustness" sheet -> TC001-TC006 -> RobustnessInvalidInputs (invalid, throws)
- *                            TC007-TC018 -> RobustnessValidInputs   (valid boundary values)
- *
- * Design balance (per test case category):
- *   Normal      : 6 Poor / 6 Standard / 6 Excellent                       = 18
- *   Robustness  : 6 invalid (throws) / 4 Poor / 4 Standard / 4 Excellent  = 18
- */
 @DisplayName("HealthIndexScore")
 class HealthIndexScoreTest {
-
-    // =====================================================================
-    // NORMAL SHEET (TC001-TC018) - valid boundary values, 6 Poor/6 Standard/6 Excellent
-    // =====================================================================
     @Nested
     @DisplayName("Normal sheet (TC001-TC018)")
     class NormalBoundaryValueTesting {
@@ -32,7 +15,7 @@ class HealthIndexScoreTest {
         @ParameterizedTest(name = "{0}: vo2Max={1}, rhr={2}, hrr={3} -> total={4} ({5})")
         @DisplayName("Total score / FitnessLevel matches Excel 'Normal' sheet")
         @CsvSource({
-                // TC,   vo2Max, rhr, hrr, expectedTotal, expectedLevel
+             
                 "TC001,  0,      90,  0,   2,  POOR",
                 "TC002,  24,     90,  11,  2,  POOR",
                 "TC003,  25,     90,  0,   3,  POOR",
@@ -63,10 +46,6 @@ class HealthIndexScoreTest {
                     h.getFitnessLevel(), tcId + ": fitness level mismatch");
         }
     }
-
-    // =====================================================================
-    // ROBUSTNESS SHEET - TC001-TC006 - invalid boundary values (min-, max+)
-    // =====================================================================
     @Nested
     @DisplayName("Robustness sheet - invalid inputs (TC001-TC006)")
     class RobustnessInvalidInputs {
@@ -79,14 +58,10 @@ class HealthIndexScoreTest {
         }
 
         @Test
-        @DisplayName("TC002: vo2Max = max+ (101) - DEFECT: no upper-bound validation, does NOT throw")
+        @DisplayName("TC002: vo2Max = max+ (101) SHOULD throw IllegalArgumentException - EXPECTED FAIL (DEF-001)")
         void tc002_vo2MaxAboveRealisticMax() {
-            // Per the requirement, VO2 Max should be validated against a realistic
-            // upper limit, but validateInputs() only checks vo2Max < 0.
-            // This is documented as DEF-001 in the Defect Summary sheet.
-            HealthIndexScore h = assertDoesNotThrow(
+            assertThrows(IllegalArgumentException.class,
                     () -> new HealthIndexScore(101, 70, 20));
-            assertEquals(5, h.calculateVo2MaxScore());
         }
 
         @Test
@@ -111,20 +86,13 @@ class HealthIndexScoreTest {
         }
 
         @Test
-        @DisplayName("TC006: hrr = max+ (41) - DEFECT: no upper-bound validation, does NOT throw")
+        @DisplayName("TC006: hrr = max+ (41) SHOULD throw IllegalArgumentException - EXPECTED FAIL (DEF-002)")
         void tc006_hrrAboveRealisticMax() {
-            // Per the requirement, HRR should be validated against a realistic
-            // upper limit, but validateInputs() only checks hrr < 0.
-            // This is documented as DEF-002 in the Defect Summary sheet.
-            HealthIndexScore h = assertDoesNotThrow(
+            assertThrows(IllegalArgumentException.class,
                     () -> new HealthIndexScore(45, 70, 41));
-            assertEquals(5, h.calculateHrrScore());
         }
     }
 
-    // =====================================================================
-    // ROBUSTNESS SHEET - TC007-TC018 - valid boundary values, 4 Poor/4 Standard/4 Excellent
-    // =====================================================================
     @Nested
     @DisplayName("Robustness sheet - valid inputs (TC007-TC018)")
     class RobustnessValidInputs {
