@@ -1,26 +1,26 @@
 -------------------------------------------------------------------------------
-Test set: com.health.fitness.HealthIndexScoreTest$RobustnessInvalidInputs
+Test set: com.health.fitness.Lab4_2_RobustnessTest$InvalidInputs
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.067 s <<< FAILURE! -- in com.health.fitness.HealthIndexScoreTest$RobustnessInvalidInputs
-com.health.fitness.HealthIndexScoreTest$RobustnessInvalidInputs.tc006_hrrAboveRealisticMax -- Time elapsed: 0.028 s <<< FAILURE!
+Tests run: 6, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.057 s <<< FAILURE! -- in com.health.fitness.Lab4_2_RobustnessTest$InvalidInputs
+com.health.fitness.Lab4_2_RobustnessTest$InvalidInputs.tc006_hrrAboveRealisticMax -- Time elapsed: 0.020 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown.
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
 	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
-	at com.health.fitness.HealthIndexScoreTest$RobustnessInvalidInputs.tc006_hrrAboveRealisticMax(HealthIndexScoreTest.java:90)
+	at com.health.fitness.Lab4_2_RobustnessTest$InvalidInputs.tc006_hrrAboveRealisticMax(Lab4 2 robustnesstest.java:52)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
 
-com.health.fitness.HealthIndexScoreTest$RobustnessInvalidInputs.tc002_vo2MaxAboveRealisticMax -- Time elapsed: 0.003 s <<< FAILURE!
+com.health.fitness.Lab4_2_RobustnessTest$InvalidInputs.tc002_vo2MaxAboveRealisticMax -- Time elapsed: 0.008 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown.
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
 	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
-	at com.health.fitness.HealthIndexScoreTest$RobustnessInvalidInputs.tc002_vo2MaxAboveRealisticMax(HealthIndexScoreTest.java:62)
+	at com.health.fitness.Lab4_2_RobustnessTest$InvalidInputs.tc002_vo2MaxAboveRealisticMax(Lab4 2 robustnesstest.java:24)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
