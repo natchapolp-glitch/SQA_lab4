@@ -15,7 +15,6 @@ class HealthIndexScoreTest {
         @ParameterizedTest(name = "{0}: vo2Max={1}, rhr={2}, hrr={3} -> total={4} ({5})")
         @DisplayName("Total score / FitnessLevel matches Excel 'Normal' sheet")
         @CsvSource({
-             
                 "TC001,  0,      90,  0,   2,  POOR",
                 "TC002,  24,     90,  11,  2,  POOR",
                 "TC003,  25,     90,  0,   3,  POOR",
@@ -100,7 +99,6 @@ class HealthIndexScoreTest {
         @ParameterizedTest(name = "{0}: vo2Max={1}, rhr={2}, hrr={3} -> total={4} ({5})")
         @DisplayName("Total score / FitnessLevel matches Excel 'Robustness' sheet")
         @CsvSource({
-                // TC,   vo2Max, rhr, hrr, expectedTotal, expectedLevel
                 "TC007,  0,      90,  0,   2,  POOR",
                 "TC008,  25,     90,  0,   3,  POOR",
                 "TC009,  40,     220, 0,   4,  POOR",
